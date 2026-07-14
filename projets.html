@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets — BaselineIQ</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="accueil.html" class="brand">
+      <span class="logo-mark"><img src="assets/logo.svg" alt="Logo BaselineIQ" width="32" height="32"></span>
+      Baseline<span class="accent">IQ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="accueil.html">Accueil</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="projets.html" class="active">Projets</a></li>
+      <li><a href="commission.html">Commission</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="accueil.html">Accueil</a>
+    <a href="apropos.html">À propos</a>
+    <a href="competences.html">Compétences</a>
+    <a href="projets.html" class="active">Projets</a>
+    <a href="commission.html">Commission</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</header>
+
+<main>
+
+<!-- PROJECTS OVERVIEW -->
+<section id="projets" style="padding-top:60px;">
+  <div class="wrap">
+    <span class="eyebrow">Projets</span>
+    <h2>6 projets, du profil joueur au scouting adversaire</h2>
+    <p class="section-intro">Chaque projet répond à un besoin réel de staff technique. <br>Cliquez sur une carte pour voir l'analyse complète.</p>
+    <div class="projects-grid">
+
+      <a href="#projet-1" class="project-card">
+        <div class="project-num">PROJET 1</div>
+        <span class="badge done">Réalisé</span>
+        <h3>Analyse statistique d'un joueur</h3>
+        <p>Profil de performance individuel : efficacité au tir, True Shooting %, tendance de forme, performance en fin de match.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span></div>
+      </a>
+
+      <a href="#projet-2" class="project-card">
+        <div class="project-num">PROJET 2</div>
+        <span class="badge done">Réalisé</span>
+        <h3>Comparaison de joueurs</h3>
+        <p>Benchmark de 2 joueurs sur des indicateurs normalisés, pour éclairer une décision de rotation.</p>
+        <div class="tags"><span class="tag">Radar chart</span><span class="tag">pandas</span></div>
+      </a>
+
+      <a href="#projet-3" class="project-card">
+        <div class="project-num">PROJET 3</div>
+        <span class="badge done">Réalisé</span>
+        <h3>Dashboard équipe</h3>
+        <p>Vue d'ensemble de la performance collective sur une saison, consultable en un coup d'œil.</p>
+        <div class="tags"><span class="tag">KPIs</span><span class="tag">Saison</span></div>
+      </a>
+
+      <a href="#projet-4" class="project-card">
+        <div class="project-num">PROJET 4</div>
+        <span class="badge done">Réalisé</span>
+        <h3>Analyse d'un match</h3>
+        <p>Décomposition par quart-temps d'une rencontre pour identifier les runs et moments charnières.</p>
+        <div class="tags"><span class="tag">Flash report</span><span class="tag">Runs</span></div>
+      </a>
+
+      <a href="#projet-5" class="project-card">
+        <div class="project-num">PROJET 5</div>
+        <span class="badge done">Réalisé</span>
+        <h3>Scouting adversaire</h3>
+        <p>Fiche de préparation tactique d'une page : tendances, joueur clé, ajustements proposés.</p>
+        <div class="tags"><span class="tag">Scouting</span><span class="tag">Template</span></div>
+      </a>
+
+      <a href="#projet-6" class="project-card">
+        <div class="project-num">PROJET 6</div>
+        <span class="badge done">Réalisé</span>
+        <h3>Analyse vidéo</h3>
+        <p>Découpage d'un match complet et rapport vidéo structuré pour le staff technique.</p>
+        <div class="tags"><span class="tag">Vidéo</span><span class="tag">Rapport coach</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJET 1 : ANALYSE JOUEUR -->
+<section id="projet-1" class="project-detail">
+  <div class="wrap">
+    <div class="detail-header">
+      <div>
+        <span class="eyebrow">Projet 1 — réalisé</span>
+        <h2 style="margin-bottom:6px;">Analyse statistique d'un joueur</h2>
+        <p style="color:var(--text-mid); max-width:600px;">Profil de performance sur 15 matchs (données d'exemple) — indicateurs calculés en direct dans cette page à partir des données brutes, comme le fait le script Python original.</p>
+      </div>
+    </div>
+
+    <div class="kpi-grid" id="kpiGrid"></div>
+
+    <div class="chart-grid">
+      <div class="chart-card full">
+        <h4>Évolution des points par match</h4>
+        <canvas id="chartPoints" height="90"></canvas>
+      </div>
+      <div class="chart-card">
+        <h4>Volume de tirs tentés (saison)</h4>
+        <canvas id="chartVolume" height="200"></canvas>
+      </div>
+      <div class="chart-card">
+        <h4>Efficacité au tir (saison)</h4>
+        <canvas id="chartEfficacite" height="200"></canvas>
+      </div>
+      <div class="chart-card full">
+        <h4>Part des points marqués au 4e quart-temps</h4>
+        <canvas id="chartQ4" height="80"></canvas>
+      </div>
+    </div>
+
+    <div class="conclusions">
+      <h3>Conclusions</h3>
+      <ol id="conclusionsList"></ol>
+    </div>
+
+    <div class="download-row">
+      <a id="downloadCsv" class="btn btn-outline btn-sm" download="joueur_stats_exemple.csv">⬇ Télécharger les données (CSV)</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJET 2 : COMPARAISON DE JOUEURS -->
+<section id="projet-2" class="project-detail">
+  <div class="wrap">
+    <span class="eyebrow">Projet 2 — réalisé</span>
+    <h2 style="margin-bottom:6px;">Comparaison de joueurs</h2>
+    <p style="color:var(--text-mid); max-width:640px; margin-bottom:36px;">Deux profils normalisés par 36 minutes pour éclairer un choix de rotation — cas d'usage : qui titulariser sur l'aile ?</p>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h4>Comparaison indexée (base 100 = meilleur des deux)</h4>
+        <canvas id="chartRadar" height="260"></canvas>
+      </div>
+      <div class="chart-card">
+        <h4>Valeurs brutes (par 36 minutes)</h4>
+        <table class="data-table compare-table">
+          <thead><tr><th>Indicateur</th><th>Joueur A (Arrière)</th><th>Joueur B (Ailier)</th></tr></thead>
+          <tbody id="compareTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="conclusions">
+      <h3>Recommandation</h3>
+      <p style="color:var(--text-mid);">Le Joueur A apporte plus de scoring et de création de jeu, le Joueur B plus de présence au rebond et une meilleure efficacité au tir. Deux profils complémentaires plutôt qu'un choix tranché : Joueur A en sortie de banc pour accélérer le jeu, Joueur B en titulaire pour la stabilité au rebond.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJET 3 : DASHBOARD EQUIPE -->
+<section id="projet-3" class="project-detail">
+  <div class="wrap">
+    <span class="eyebrow">Projet 3 — réalisé</span>
+    <h2 style="margin-bottom:6px;">Dashboard équipe</h2>
+    <p style="color:var(--text-mid); max-width:640px; margin-bottom:36px;">Vue d'ensemble d'une saison de 20 matchs — bilan, différentiel de points et meilleurs marqueurs, calculés en direct depuis les résultats match par match.</p>
+
+    <div class="kpi-grid" id="teamKpiGrid"></div>
+
+    <div class="chart-grid">
+      <div class="chart-card full">
+        <h4>Différentiel de points par match (saison)</h4>
+        <canvas id="chartDiff" height="80"></canvas>
+      </div>
+      <div class="chart-card">
+        <h4>Forme sur les 5 derniers matchs</h4>
+        <div class="form-pills" id="formPills" style="margin-top:6px;"></div>
+        <p style="color:var(--text-mid); font-size:.85rem; margin-top:14px;">V = victoire, D = défaite. Lecture rapide pour un coach avant une réunion de préparation.</p>
+      </div>
+      <div class="chart-card">
+        <h4>Meilleurs marqueurs de la saison</h4>
+        <canvas id="chartTopScorers" height="140"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJET 4 : ANALYSE DE MATCH -->
+<section id="projet-4" class="project-detail">
+  <div class="wrap">
+    <span class="eyebrow">Projet 4 — réalisé</span>
+    <h2 style="margin-bottom:6px;">Analyse d'un match</h2>
+    <p style="color:var(--text-mid); max-width:640px; margin-bottom:36px;">Notre Équipe vs AS Rivéry (match d'exemple) — décomposition par quart-temps pour identifier les runs qui ont décidé du match.</p>
+
+    <div class="chart-grid">
+      <div class="chart-card full">
+        <h4>Évolution du score cumulé par quart-temps</h4>
+        <canvas id="chartMatch" height="80"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-top:24px;">
+      <h4>Moments clés du match</h4>
+      <div class="timeline" style="margin-top:20px;">
+        <div class="timeline-item">
+          <h4>Q1-Q2 — Match équilibré</h4>
+          <p>38-35 à la mi-temps, rythme serré, aucune équipe ne prend plus de 5 points d'avance.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Q3 — Run adverse de 12-2</h4>
+          <p>AS Rivéry resserre sa défense et enchaîne les paniers en transition ; on rentre au dernier quart-temps mené 53-57.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Q4 — Réponse collective</h4>
+          <p>Run de 14-2 en début de période après un temps mort défensif ; le match bascule définitivement, score final 78-71.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="conclusions">
+      <h3>Conclusion du flash report</h3>
+      <p style="color:var(--text-mid);">Le temps mort pris à l'entame du 4e quart-temps a été le tournant du match — l'ajustement défensif (aide sur poste bas) a coupé le rythme de l'adversaire et relancé notre transition offensive. Point à conserver pour la prochaine préparation de match.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJET 5 : SCOUTING ADVERSAIRE -->
+<section id="projet-5" class="project-detail">
+  <div class="wrap">
+    <span class="eyebrow">Projet 5 — réalisé</span>
+    <h2 style="margin-bottom:6px;">Rapport de scouting adversaire</h2>
+    <p style="color:var(--text-mid); max-width:640px; margin-bottom:36px;">Fiche de préparation d'une page — exemple sur un adversaire fictif, format directement réutilisable club par club.</p>
+
+    <div class="chart-grid" style="grid-template-columns:1.3fr .7fr;">
+      <div class="doc-card">
+        <div class="doc-head">
+          <span class="doc-eyebrow">Fiche scouting</span>
+          <h3>ES Argentan — prochain adversaire</h3>
+        </div>
+        <div class="doc-body">
+          <div class="doc-section">
+            <h4>Tendances offensives</h4>
+            <ul>
+              <li>68% des attaques passent par le poste bas (intérieur n°5, dominant physiquement)</li>
+              <li>Faible % à 3 points en tant qu'équipe (28% sur la saison)</li>
+              <li>Jeu de transition rapide dès rebond défensif capté</li>
+            </ul>
+          </div>
+          <div class="doc-section">
+            <h4>Joueur clé</h4>
+            <div class="callout"><strong>Meneur n°4</strong> — 17 pts/match, référent au tir extérieur en catch-and-shoot, danger principal en fin de possession.</div>
+          </div>
+          <div class="doc-section">
+            <h4>Ajustements proposés</h4>
+            <ul>
+              <li>Doubler la ligne au poste bas dès réception de balle</li>
+              <li>Presser leur sortie de balle en transition — pertes fréquentes sous pression</li>
+              <li>Ne jamais laisser le Meneur n°4 tirer en catch-and-shoot, contester chaque tir extérieur</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h4>Répartition des tirs adverses</h4>
+        <canvas id="chartScouting" height="220"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJET 6 : ANALYSE VIDEO -->
+<section id="projet-6" class="project-detail">
+  <div class="wrap">
+    <span class="eyebrow">Projet 6 — réalisé</span>
+    <h2 style="margin-bottom:6px;">Analyse vidéo</h2>
+    <p style="color:var(--text-mid); max-width:640px; margin-bottom:28px;">Exemple de recueil vidéo et de rapport structuré. Envie du même travail pour votre club ? <a href="commission.html" style="color:var(--orange); font-weight:700;">Commandez une analyse</a>.</p>
+
+    <div class="legend-chips">
+      <span class="legend-chip"><span class="legend-dot" style="background:var(--blue);"></span> Offensif</span>
+      <span class="legend-chip"><span class="legend-dot" style="background:var(--red);"></span> Défensif</span>
+      <span class="legend-chip"><span class="legend-dot" style="background:var(--green);"></span> Individuel</span>
+      <span class="legend-chip"><span class="legend-dot" style="background:var(--orange);"></span> Collectif</span>
+    </div>
+
+    <div class="chart-card">
+      <h4>Extrait du recueil vidéo (match exemple)</h4>
+      <table class="data-table" style="margin-top:12px;">
+        <thead><tr><th>Timecode</th><th>Q-T</th><th>Catégorie</th><th>Constat</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">08:12</td><td>Q1</td><td>Offensif</td><td>Perte de balle sur relais mal lu en sortie de zone</td></tr>
+          <tr><td class="strong">19:45</td><td>Q2</td><td>Défensif</td><td>Prise à deux efficace sur poste bas, provoque une perte de balle</td></tr>
+          <tr><td class="strong">24:12</td><td>Q3</td><td>Offensif</td><td>Perte de balle en sortie de pressing, relais côté fort uniquement</td></tr>
+          <tr><td class="strong">28:47</td><td>Q3</td><td>Offensif</td><td>Même schéma répété — absence de soutien côté faible</td></tr>
+          <tr><td class="strong">34:03</td><td>Q4</td><td>Individuel</td><td>Bonne lecture d'écran, panier en pénétration</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="report-example" style="margin-top:24px;">
+      <strong>THÈME :</strong> Pertes de balle en sortie de pressing (Q3-Q4)<br><br>
+      <strong>Constat :</strong> 5 pertes de balle sur pressing adverse en 2e mi-temps (contre 1 en 1re mi-temps), concentrées sur les relances côté fort.<br><br>
+      <strong>Extraits :</strong> 24:12 / 28:47 / 31:05<br><br>
+      <strong>Lecture :</strong> le relais de balle se fait systématiquement vers le même joueur sous pression, sans mouvement de soutien côté faible.<br><br>
+      <strong>Recommandation :</strong> travailler en entraînement un exercice de sortie de pressing avec 2 options de relais obligatoires.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="brand" style="justify-content:center;">
+    <img src="assets/logo.svg" alt="Logo BaselineIQ" width="24" height="24">
+    BaselineIQ
+  </div>
+  Portfolio Basketball Analytics — Data &amp; Vidéo appliqués à la performance.
+</footer>
+
+<script src="script.js"></script>
+<script>
+const round1 = (n) => Math.round(n * 10) / 10;
+const sum = (arr) => arr.reduce((a, b) => a + b, 0);
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+Chart.defaults.color = "#4b5563";
+
+// =======================================================================
+// PROJET 1 — ANALYSE JOUEUR
+// =======================================================================
+const matches = [
+  {id:1, adversaire:"ES Nogent", minutes:30, points:8, points_q4:1, rebonds:6, passes:6, t2t:5, t2r:2, t3t:4, t3r:1, lft:1, lfr:1},
+  {id:2, adversaire:"US Ivry", minutes:21, points:10, points_q4:2, rebonds:6, passes:5, t2t:7, t2r:3, t3t:6, t3r:1, lft:1, lfr:1},
+  {id:3, adversaire:"AS Villejuif", minutes:32, points:8, points_q4:2, rebonds:2, passes:7, t2t:4, t2r:2, t3t:3, t3r:1, lft:2, lfr:1},
+  {id:4, adversaire:"CSP Limoges B", minutes:25, points:18, points_q4:6, rebonds:4, passes:1, t2t:9, t2r:5, t3t:8, t3r:2, lft:3, lfr:2},
+  {id:5, adversaire:"JL Bourg B", minutes:25, points:15, points_q4:3, rebonds:1, passes:7, t2t:7, t2r:4, t3t:2, t3r:1, lft:6, lfr:4},
+  {id:6, adversaire:"BC Orleans B", minutes:30, points:13, points_q4:3, rebonds:6, passes:6, t2t:9, t2r:4, t3t:4, t3r:1, lft:2, lfr:2},
+  {id:7, adversaire:"Chalons Reims B", minutes:23, points:16, points_q4:5, rebonds:2, passes:6, t2t:6, t2r:3, t3t:4, t3r:2, lft:5, lfr:4},
+  {id:8, adversaire:"ESSM Le Portel B", minutes:32, points:15, points_q4:2, rebonds:3, passes:2, t2t:9, t2r:4, t3t:2, t3r:1, lft:4, lfr:4},
+  {id:9, adversaire:"SO Rochefort", minutes:22, points:17, points_q4:4, rebonds:5, passes:4, t2t:7, t2r:4, t3t:6, t3r:2, lft:4, lfr:3},
+  {id:10, adversaire:"St Vallier", minutes:21, points:12, points_q4:4, rebonds:5, passes:1, t2t:4, t2r:2, t3t:3, t3r:1, lft:6, lfr:5},
+  {id:11, adversaire:"Roanne B", minutes:28, points:26, points_q4:3, rebonds:6, passes:5, t2t:8, t2r:5, t3t:8, t3r:4, lft:5, lfr:4},
+  {id:12, adversaire:"Boulazac B", minutes:26, points:17, points_q4:5, rebonds:7, passes:2, t2t:6, t2r:3, t3t:7, t3r:3, lft:2, lfr:2},
+  {id:13, adversaire:"Poitiers B", minutes:28, points:18, points_q4:2, rebonds:1, passes:5, t2t:7, t2r:3, t3t:8, t3r:2, lft:6, lfr:6},
+  {id:14, adversaire:"Blois B", minutes:25, points:9, points_q4:1, rebonds:4, passes:7, t2t:8, t2r:3, t3t:3, t3r:1, lft:0, lfr:0},
+  {id:15, adversaire:"Nancy B", minutes:27, points:16, points_q4:3, rebonds:7, passes:6, t2t:6, t2r:3, t3t:8, t3r:3, lft:1, lfr:1},
+];
+
+const points = matches.map(m => m.points);
+const t2tSum = sum(matches.map(m => m.t2t));
+const t2rSum = sum(matches.map(m => m.t2r));
+const t3tSum = sum(matches.map(m => m.t3t));
+const t3rSum = sum(matches.map(m => m.t3r));
+const lftSum = sum(matches.map(m => m.lft));
+const lfrSum = sum(matches.map(m => m.lfr));
+const tirsTentesTotal = t2tSum + t3tSum;
+const tirsReussisTotal = t2rSum + t3rSum;
+const pointsSum = sum(points);
+
+const pctTirGlobal = round1(tirsReussisTotal / tirsTentesTotal * 100);
+const pct3pts = round1(t3rSum / t3tSum * 100);
+const pctLF = round1(lfrSum / lftSum * 100);
+const trueShooting = round1(pointsSum / (2 * (tirsTentesTotal + 0.44 * lftSum)) * 100);
+const moyPoints = round1(pointsSum / matches.length);
+
+function rollingMean(arr, window) {
+  return arr.map((_, i) => {
+    const start = Math.max(0, i - window + 1);
+    const slice = arr.slice(start, i + 1);
+    return round1(sum(slice) / slice.length);
+  });
+}
+const pointsMobile = rollingMean(points, 3);
+
+const milieu = Math.floor(matches.length / 2);
+const moyDebut = sum(points.slice(0, milieu)) / milieu;
+const moyFin = sum(points.slice(milieu)) / (points.length - milieu);
+const evolutionPoints = round1(moyFin - moyDebut);
+
+const partQ4 = matches.map(m => round1(m.points_q4 / m.points * 100));
+const tendanceQ4 = round1(sum(partQ4.slice(-5)) / 5 - sum(partQ4.slice(0, 5)) / 5);
+
+const kpis = [
+  {num: moyPoints, lbl: "Points / match"},
+  {num: pctTirGlobal + "%", lbl: "% tirs global"},
+  {num: trueShooting + "%", lbl: "True Shooting %"},
+  {num: Math.max(...points), lbl: "Meilleur match (pts)"},
+];
+document.getElementById("kpiGrid").innerHTML = kpis.map(k =>
+  `<div class="kpi"><div class="num">${k.num}</div><div class="lbl">${k.lbl}</div></div>`
+).join("");
+
+const conclusions = [
+  `Efficacité : ${pctTirGlobal}% de réussite globale au tir, True Shooting ${trueShooting}% — un profil orienté finition avec un bon volume de lancers francs obtenus (${pctLF}% de réussite).`,
+  `Tendance de forme : ${evolutionPoints > 0 ? "progression" : "régression"} de ${Math.abs(evolutionPoints)} pts/match entre le début et la fin de la saison.`,
+  `Fin de match : ${tendanceQ4 > 0 ? "hausse" : "baisse"} de ${Math.abs(tendanceQ4)} points de pourcentage de la contribution au 4e quart-temps sur les 5 derniers matchs — à croiser avec la gestion du temps de jeu.`,
+  `Point d'entraînement suggéré : cibler le travail sur le type de tir le moins efficace plutôt que le volume global.`,
+];
+document.getElementById("conclusionsList").innerHTML = conclusions.map(c => `<li>${c}</li>`).join("");
+
+new Chart(document.getElementById("chartPoints"), {
+  data: {
+    labels: matches.map(m => "M" + m.id),
+    datasets: [
+      {type:"bar", label:"Points par match", data: points, backgroundColor:"rgba(31,78,140,0.55)", borderRadius:4, order:2},
+      {type:"line", label:"Moyenne mobile (3 matchs)", data: pointsMobile, borderColor:"#e8590c", backgroundColor:"#e8590c", tension:.3, pointRadius:4, borderWidth:2.5, order:1},
+    ]
+  },
+  options: {responsive:true, plugins:{legend:{position:"bottom"}}, scales:{y:{beginAtZero:true, title:{display:true,text:"Points"}}}}
+});
+
+new Chart(document.getElementById("chartVolume"), {
+  type:"bar",
+  data:{
+    labels:["2 points","3 points","Lancers francs"],
+    datasets:[{data:[t2tSum,t3tSum,lftSum], backgroundColor:["#1f4e8c","#e8590c","#2f9e44"], borderRadius:6}]
+  },
+  options:{responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true, title:{display:true,text:"Tentatives"}}}}
+});
+
+new Chart(document.getElementById("chartEfficacite"), {
+  type:"bar",
+  data:{
+    labels:["% tirs global","% à 3pts","% lancers francs"],
+    datasets:[{data:[pctTirGlobal,pct3pts,pctLF], backgroundColor:["#1f4e8c","#e8590c","#2f9e44"], borderRadius:6}]
+  },
+  options:{responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true, max:100, title:{display:true,text:"% de réussite"}}}}
+});
+
+new Chart(document.getElementById("chartQ4"), {
+  type:"line",
+  data:{
+    labels: matches.map(m => "M" + m.id),
+    datasets:[{label:"% des points marqués en Q4", data: partQ4, borderColor:"#c92a2a", backgroundColor:"#c92a2a", tension:.25, pointRadius:4, borderWidth:2.5}]
+  },
+  options:{responsive:true, plugins:{legend:{position:"bottom"}}, scales:{y:{beginAtZero:true, title:{display:true,text:"% des points du match"}}}}
+});
+
+const CSV_B64 = "bWF0Y2hfaWQsZGF0ZSxhZHZlcnNhaXJlLG1pbnV0ZXMscG9pbnRzLHBvaW50c19xNCxyZWJvbmRzLHBhc3NlcyxpbnRlcmNlcHRpb25zLGNvbnRyZXMsYmFsbGVzX3BlcmR1ZXMsdGlyc18ycHRzX3RlbnRlcyx0aXJzXzJwdHNfcmV1c3Npcyx0aXJzXzNwdHNfdGVudGVzLHRpcnNfM3B0c19yZXVzc2lzLGxhbmNlcnNfdGVudGVzLGxhbmNlcnNfcmV1c3Npcw0KMSwyMDI1LTA5LTIxLEVTIE5vZ2VudCwzMCw4LDEsNiw2LDAsMiwzLDUsMiw0LDEsMSwxDQoyLDIwMjUtMDktMjgsVVMgSXZyeSwyMSwxMCwyLDYsNSwzLDAsMyw3LDMsNiwxLDEsMQ0KMywyMDI1LTEwLTA1LEFTIFZpbGxlanVpZiwzMiw4LDIsMiw3LDIsMCwwLDQsMiwzLDEsMiwxDQo0LDIwMjUtMTAtMTIsQ1NQIExpbW9nZXMgQiwyNSwxOCw2LDQsMSwyLDIsNCw5LDUsOCwyLDMsMg0KNSwyMDI1LTEwLTE5LEpMIEJvdXJnIEIsMjUsMTUsMywxLDcsMSwwLDMsNyw0LDIsMSw2LDQNCjYsMjAyNS0xMC0yNixCQyBPcmxlYW5zIEIsMzAsMTMsMyw2LDYsMCwyLDEsOSw0LDQsMSwyLDINCjcsMjAyNS0xMS0wMixDaGFsb25zIFJlaW1zIEIsMjMsMTYsNSwyLDYsMiwwLDEsNiwzLDQsMiw1LDQNCjgsMjAyNS0xMS0wOSxFU1NNIExlIFBvcnRlbCBCLDMyLDE1LDIsMywyLDMsMSwzLDksNCwyLDEsNCw0DQo5LDIwMjUtMTEtMTYsU08gUm9jaGVmb3J0LDIyLDE3LDQsNSw0LDIsMCwxLDcsNCw2LDIsNCwzDQoxMCwyMDI1LTExLTIzLFN0IFZhbGxpZXIsMjEsMTIsNCw1LDEsMywxLDQsNCwyLDMsMSw2LDUNCjExLDIwMjUtMTEtMzAsUm9hbm5lIEIsMjgsMjYsMyw2LDUsMiwyLDIsOCw1LDgsNCw1LDQNCjEyLDIwMjUtMTItMDcsQm91bGF6YWMgQiwyNiwxNyw1LDcsMiwwLDIsMiw2LDMsNywzLDIsMg0KMTMsMjAyNS0xMi0xNCxQb2l0aWVycyBCLDI4LDE4LDIsMSw1LDIsMSwwLDcsMyw4LDIsNiw2DQoxNCwyMDI1LTEyLTIxLEJsb2lzIEIsMjUsOSwxLDQsNywwLDIsMSw4LDMsMywxLDAsMA0KMTUsMjAyNS0xMi0yOCxOYW5jeSBCLDI3LDE2LDMsNyw2LDEsMiwyLDYsMyw4LDMsMSwxDQo=";
+document.getElementById("downloadCsv").href = "data:text/csv;base64," + CSV_B64;
+
+// =======================================================================
+// PROJET 2 — COMPARAISON DE JOUEURS
+// =======================================================================
+const playerA = {label:"Joueur A (Arrière)", pts36:19.2, reb36:4.1, pas36:5.8, pct:44, int36:1.6};
+const playerB = {label:"Joueur B (Ailier)", pts36:15.4, reb36:7.3, pas36:2.9, pct:51, int36:1.1};
+const compareMetrics = [
+  {key:"pts36", label:"Points / 36 min"},
+  {key:"reb36", label:"Rebonds / 36 min"},
+  {key:"pas36", label:"Passes / 36 min"},
+  {key:"pct", label:"% Tirs"},
+  {key:"int36", label:"Interceptions / 36 min"},
+];
+function indexPair(a, b) {
+  const m = Math.max(a, b);
+  return [round1(a / m * 100), round1(b / m * 100)];
+}
+const radarA = [], radarB = [];
+compareMetrics.forEach(m => {
+  const [ia, ib] = indexPair(playerA[m.key], playerB[m.key]);
+  radarA.push(ia); radarB.push(ib);
+});
+
+new Chart(document.getElementById("chartRadar"), {
+  type:"radar",
+  data:{
+    labels: compareMetrics.map(m => m.label),
+    datasets:[
+      {label:"Joueur A", data:radarA, borderColor:"#1f4e8c", backgroundColor:"rgba(31,78,140,0.18)", pointBackgroundColor:"#1f4e8c"},
+      {label:"Joueur B", data:radarB, borderColor:"#e8590c", backgroundColor:"rgba(232,89,12,0.18)", pointBackgroundColor:"#e8590c"},
+    ]
+  },
+  options:{responsive:true, plugins:{legend:{position:"bottom"}}, scales:{r:{beginAtZero:true, max:100}}}
+});
+
+document.getElementById("compareTableBody").innerHTML = compareMetrics.map(m =>
+  `<tr><td>${m.label}</td><td class="strong">${playerA[m.key]}${m.key==="pct"?"%":""}</td><td class="strong">${playerB[m.key]}${m.key==="pct"?"%":""}</td></tr>`
+).join("");
+
+// =======================================================================
+// PROJET 3 — DASHBOARD EQUIPE
+// =======================================================================
+const seasonPF = [82,75,69,88,91,78,65,84,79,95,73,80,86,68,77,90,83,71,89,76];
+const seasonPA = [76,79,72,80,85,81,70,77,83,88,79,74,90,72,68,85,80,75,82,79];
+const results = seasonPF.map((pf, i) => pf > seasonPA[i]);
+const wins = results.filter(Boolean).length;
+const losses = results.length - wins;
+const diffs = seasonPF.map((pf, i) => pf - seasonPA[i]);
+const avgPF = round1(sum(seasonPF) / seasonPF.length);
+const avgPA = round1(sum(seasonPA) / seasonPA.length);
+
+const teamKpis = [
+  {num: `${wins}-${losses}`, lbl: "Bilan (V-D)"},
+  {num: avgPF, lbl: "Points marqués / match"},
+  {num: avgPA, lbl: "Points encaissés / match"},
+  {num: (avgPF - avgPA > 0 ? "+" : "") + round1(avgPF - avgPA), lbl: "Différentiel moyen"},
+];
+document.getElementById("teamKpiGrid").innerHTML = teamKpis.map(k =>
+  `<div class="kpi"><div class="num">${k.num}</div><div class="lbl">${k.lbl}</div></div>`
+).join("");
+
+new Chart(document.getElementById("chartDiff"), {
+  type:"bar",
+  data:{
+    labels: seasonPF.map((_, i) => "M" + (i+1)),
+    datasets:[{
+      label:"Différentiel de points",
+      data: diffs,
+      backgroundColor: diffs.map(d => d >= 0 ? "rgba(47,158,68,0.65)" : "rgba(201,42,42,0.65)"),
+      borderRadius:4,
+    }]
+  },
+  options:{responsive:true, plugins:{legend:{display:false}}, scales:{y:{title:{display:true,text:"Différentiel"}}}}
+});
+
+document.getElementById("formPills").innerHTML = results.slice(-5).map(w =>
+  `<div class="pill ${w ? "w" : "l"}">${w ? "V" : "D"}</div>`
+).join("");
+
+const topScorers = [{name:"Joueur A", pts:284},{name:"Joueur C", pts:241},{name:"Joueur B", pts:198}];
+new Chart(document.getElementById("chartTopScorers"), {
+  type:"bar",
+  data:{
+    labels: topScorers.map(p => p.name),
+    datasets:[{data: topScorers.map(p => p.pts), backgroundColor:"#1f4e8c", borderRadius:6}]
+  },
+  options:{indexAxis:"y", responsive:true, plugins:{legend:{display:false}}, scales:{x:{title:{display:true,text:"Points (saison)"}}}}
+});
+
+// =======================================================================
+// PROJET 4 — ANALYSE DE MATCH
+// =======================================================================
+const homeQ = [18,20,15,25];
+const awayQ = [16,19,22,14];
+function cumulative(arr){ let t=0; return arr.map(v => t += v); }
+new Chart(document.getElementById("chartMatch"), {
+  type:"line",
+  data:{
+    labels:["Q1","Q2","Q3","Q4"],
+    datasets:[
+      {label:"Notre Équipe", data: cumulative(homeQ), borderColor:"#1f4e8c", backgroundColor:"#1f4e8c", tension:.2, pointRadius:5, borderWidth:3},
+      {label:"AS Rivéry", data: cumulative(awayQ), borderColor:"#e8590c", backgroundColor:"#e8590c", tension:.2, pointRadius:5, borderWidth:3},
+    ]
+  },
+  options:{responsive:true, plugins:{legend:{position:"bottom"}}, scales:{y:{title:{display:true,text:"Score cumulé"}}}}
+});
+
+// =======================================================================
+// PROJET 5 — SCOUTING (repartition des tirs adverses)
+// =======================================================================
+new Chart(document.getElementById("chartScouting"), {
+  type:"doughnut",
+  data:{
+    labels:["Poste bas","Mi-distance","3 points"],
+    datasets:[{data:[68,20,12], backgroundColor:["#1f4e8c","#e8590c","#2f9e44"]}]
+  },
+  options:{responsive:true, plugins:{legend:{position:"bottom"}}}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil — BaselineIQ</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="accueil.html" class="brand">
+      <span class="logo-mark"><img src="assets/logo.svg" alt="Logo BaselineIQ" width="32" height="32"></span>
+      Baseline<span class="accent">IQ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="accueil.html" class="active">Accueil</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="commission.html">Commission</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="accueil.html" class="active">Accueil</a>
+    <a href="apropos.html">À propos</a>
+    <a href="competences.html">Compétences</a>
+    <a href="projets.html">Projets</a>
+    <a href="commission.html">Commission</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-logo-row">
+        <img src="assets/logo.svg" alt="Logo BaselineIQ" width="52" height="52">
+        <span class="eyebrow" style="color:var(--orange-light); margin:0;">Portfolio Basketball Analytics</span>
+      </div>
+      <h1>Baseline<span class="accent">IQ</span></h1>
+      <p class="lead">L'intelligence de jeu, version data. J'aide les clubs amateurs et jeunes à transformer leurs matchs en décisions tactiques : grâce à l'analyse chiffrée et vidéo.</p>
+      <div class="hero-actions">
+        <a href="projets.html" class="btn btn-primary">Voir les 6 projets</a>
+        <a href="contact.html" class="btn btn-ghost">Me contacter</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge">🏀 BPJEPS Basketball</div>
+        <div class="hero-badge">🐍 Python · pandas</div>
+        <div class="hero-badge">📊 Data visualisation</div>
+        <div class="hero-badge">🎥 Analyse vidéo</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="brand" style="justify-content:center;">
+    <img src="assets/logo.svg" alt="Logo BaselineIQ" width="24" height="24">
+    BaselineIQ
+  </div>
+  Portfolio Basketball Analytics — Data &amp; Vidéo appliqués à la performance.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
