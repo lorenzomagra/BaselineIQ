@@ -69,7 +69,7 @@ main{display:block; padding-top:62px;}
   color:#fff; position:relative; overflow:hidden; padding:24px;
 }
 .cover-inner{position:relative; z-index:1; max-width:560px;}
-.cover-logo{margin:0 auto 28px; width:96px; height:96px;}
+.cover-logo{margin:0 auto 28px; width:180px; height:180px;}
 .cover h1{font-size:clamp(2.4rem,6vw,3.8rem); color:#fff; letter-spacing:-0.02em;}
 .cover h1 .accent{color:var(--orange);}
 .cover p.lead{margin:20px auto 40px; font-size:1.1rem; color:#c3cbdb; max-width:440px;}
